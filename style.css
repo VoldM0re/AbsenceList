@@ -32,10 +32,12 @@ main {
     margin: 10px;
     padding: 20px;
     display: flex;
+    flex-direction: column;
     border-radius: 10px;
     font-weight: 600;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.546);
     transition: .1s ease-in-out;
+    cursor: pointer;
 }
 
 .student-card:active {
@@ -60,4 +62,19 @@ button {
 
 button:active {
     transform: scale(.92);
+}
+
+.name-check {
+
+}
+
+.reason {
+    cursor: text;
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+}
+
+.hidden {
+    display: none;
 }

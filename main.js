@@ -35,9 +35,11 @@ const List = {
 
 // Шаблон карточки студента
 const studentCard = `
-<label class='student-card' style='background-color: hsl(%colorIncrement%, 100%, 45%);'>
-    <input class='checkbox' value='%index%' type='checkbox'> %index%. %student%
+<label class='student-card' style='background-color: hsl(%colorIncrement%, 100%, 45%);' onclick='openReason()'>
+    <div class='name-check'><input class='checkbox' value='%index%' type='checkbox'> %index%. %student%</div>
+    <input class='reason hidden' placeholder='Причина отсутствия?' type='text'>
 </label>`;
+
 
 // На каждого студента цветовой тон смещается на colorIncrement вправо
 let colorIncrement = 0;
@@ -49,6 +51,8 @@ for ([index, student] of Object.entries(List)) {
 
     colorIncrement += 9;
 }
+
+
 
 // Сперва заполняется список отсутсвтующих, затем в его начало добавляется элемент с их кол-вом
 let copyButton = document.getElementById('button');
@@ -64,3 +68,9 @@ function copyToClipboard() {
     navigator.clipboard.writeText(absent.join('\n'));
     copyButton.innerText = 'Скопировано!';
 }
+
+function openReason() {
+
+}
+
+//Нужно найти следующего ребёнка
