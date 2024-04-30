@@ -35,7 +35,7 @@ const List = {
 
 // Шаблон карточки студента
 const studentCard = `
-<label class='student-card' style='background-color: hsl(%colorIncrement%, 100%, 45%);' onclick='openReason()'>
+<label class='student-card' style='background-color: hsl(%colorIncrement%, 100%, 45%);'>
     <div class='name-check'><input class='checkbox' value='%index%' type='checkbox'> %index%. %student%</div>
     <input class='reason hidden' placeholder='Причина отсутствия?' type='text'>
 </label>`;
@@ -53,24 +53,31 @@ for ([index, student] of Object.entries(List)) {
 }
 
 
-
-// Сперва заполняется список отсутсвтующих, затем в его начало добавляется элемент с их кол-вом
+// Сперва заполняется список отсутсвтующих с причинами, затем в его начало добавляется элемент с их кол-вом
 let copyButton = document.getElementById('button');
 function copyToClipboard() {
     let absent = [];
     for (checkbox of document.getElementsByClassName('checkbox')) {
         if (checkbox.checked) {
-            absent.push(List[checkbox.value]);
+            checkbox.parentNode.parentNode.lastElementChild.value != ''
+                ? absent.push(`${List[checkbox.value]} (${checkbox.parentNode.parentNode.lastElementChild.value})`)
+                : absent.push(List[checkbox.value]);
         }
     }
 
-    absent.unshift(`Отсутствует: ${absent.length} студентов`);
+    absent.unshift(`Число отсутствующих студентов: ${absent.length}`);
     navigator.clipboard.writeText(absent.join('\n'));
     copyButton.innerText = 'Скопировано!';
 }
 
-function openReason() {
-
+// Слушает каждый чекбокс, берёт последний элемент родителя (student-card)
+// и делает видимыи последний элемент - текстовое поле
+let checkboxes = document.getElementsByClassName("checkbox");
+for (let i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].addEventListener("change", function () {
+        var textField = this.parentNode.parentNode.lastElementChild;
+        this.checked
+            ? textField.style.display = "block"
+            : textField.style.display = "none";
+    });
 }
-
-//Нужно найти следующего ребёнка

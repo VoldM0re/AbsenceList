@@ -46,6 +46,8 @@ main {
 
 .checkbox {
     margin-right: 10px;
+    background-color: #191919;
+    accent-color: #fff;
 }
 
 button {
@@ -64,15 +66,20 @@ button:active {
     transform: scale(.92);
 }
 
-.name-check {
-
-}
-
 .reason {
     cursor: text;
     margin-top: 20px;
     width: 100%;
     padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: #00000046;
+    color: #ffffff;
+}
+
+.reason::placeholder {
+    color: #efefef;
 }
 
 .hidden {
