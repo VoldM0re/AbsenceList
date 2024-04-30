@@ -40,7 +40,6 @@ const studentCard = `
     <input class='reason hidden' placeholder='Причина отсутствия?' type='text'>
 </label>`;
 
-
 // На каждого студента цветовой тон смещается на colorIncrement вправо
 let colorIncrement = 0;
 for ([index, student] of Object.entries(List)) {
@@ -52,15 +51,15 @@ for ([index, student] of Object.entries(List)) {
     colorIncrement += 9;
 }
 
-
 // Сперва заполняется список отсутсвтующих с причинами, затем в его начало добавляется элемент с их кол-вом
 let copyButton = document.getElementById('button');
 function copyToClipboard() {
     let absent = [];
     for (checkbox of document.getElementsByClassName('checkbox')) {
         if (checkbox.checked) {
-            checkbox.parentNode.parentNode.lastElementChild.value != ''
-                ? absent.push(`${List[checkbox.value]} (${checkbox.parentNode.parentNode.lastElementChild.value})`)
+            let reason = checkbox.parentNode.parentNode.lastElementChild.value.trim();
+            reason != ''
+                ? absent.push(`${List[checkbox.value]} (${reason})`)
                 : absent.push(List[checkbox.value]);
         }
     }
