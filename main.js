@@ -1,4 +1,4 @@
-let List = [
+let students = [
     'Александров К.',
     'Батищев А.',
     'Белякова П.',
@@ -40,8 +40,8 @@ const studentCard = `
 
 // На каждого студента цветовой тон смещается на colorIncrement вправо
 let colorIncrement = 0;
-for (const student of List) {
-    const index = List.indexOf(student);
+for (const student of students) {
+    const index = students.indexOf(student);
     document.getElementById('main').innerHTML += studentCard
         .replace('%student%', student)
         .replace(/%index%/g, index + 1)
@@ -58,8 +58,8 @@ function copyToClipboard() {
         if (checkbox.checked) {
             let reason = checkbox.parentNode.parentNode.lastElementChild.value.trim();
             reason != ''
-                ? absent.push(`${List[checkbox.value]} (${reason})`)
-                : absent.push(List[checkbox.value]);
+                ? absent.push(`${students[checkbox.value]} (${reason})`)
+                : absent.push(students[checkbox.value]);
         }
     }
 
