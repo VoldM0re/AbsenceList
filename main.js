@@ -23,11 +23,9 @@ let List = [
     'Проворова Д.',
     'Романов И.',
     'Романюк И.',
-    'Сараполов Р.',
     'Саталова Д.',
     'Сидорова А.',
     'Старковская М.',
-    'Сунцов С.',
     'Хабет Г.',
     'Хвесько В.',
     'Хмурович М.'
@@ -42,7 +40,6 @@ const studentCard = `
 
 // На каждого студента цветовой тон смещается на colorIncrement вправо
 let colorIncrement = 0;
-
 for (const student of List) {
     const index = List.indexOf(student);
     document.getElementById('main').innerHTML += studentCard
