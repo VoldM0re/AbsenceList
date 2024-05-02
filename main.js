@@ -34,7 +34,7 @@ let students = [
 // Шаблон карточки студента
 const studentCard = `
 <label class='student-card' style='background-color: hsl(%colorIncrement%, 100%, 45%);'>
-    <div class='name-check'><input class='checkbox' value='%index%' type='checkbox'> %index%. %student%</div>
+    <div class='name-check'><input class='checkbox' value='%index%' type='checkbox'> %position%. %student%</div>
     <input class='reason hidden' placeholder='Причина отсутствия?' type='text'>
 </label>`;
 
@@ -44,7 +44,8 @@ for (const student of students) {
     const index = students.indexOf(student);
     document.getElementById('main').innerHTML += studentCard
         .replace('%student%', student)
-        .replace(/%index%/g, index + 1)
+        .replace(/%index%/g, index)
+        .replace(/%position%/g, index + 1)
         .replace('%colorIncrement%', colorIncrement);
 
     colorIncrement += 9;
