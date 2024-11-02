@@ -32,7 +32,7 @@ let students = [
 
 // Шаблон карточки студента
 const studentCard = `
-<label class='student-card' style='background-color: hsl(%colorIncrement%, 100%, 45%);'>
+<label class='student-card' style='background-color: hsl(%colorIncrement%, 80%, 45%);'>
     <div class='name-check'><input class='checkbox' value='%index%' type='checkbox'> %position%. %student%</div>
     <input class='reason hidden' placeholder='Причина отсутствия?' type='text'>
 </label>`;
@@ -47,7 +47,7 @@ for (const student of students) {
         .replace(/%position%/g, index + 1)
         .replace('%colorIncrement%', colorIncrement);
 
-    colorIncrement += 9;
+    colorIncrement += 10;
 }
 
 // Сперва заполняется список отсутсвтующих с причинами, затем в его начало добавляется элемент с их кол-вом
