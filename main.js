@@ -63,7 +63,7 @@ function copyToClipboard() {
         }
     }
 
-    absent.unshift(`Число отсутствующих студентов: ${absent.length}`);
+    absent.unshift(`Число отсутствующих студентов на первой паре: ${absent.length}`);
     navigator.clipboard.writeText(absent.join('\n'));
     copyButton.innerText = 'Скопировано!';
 }
