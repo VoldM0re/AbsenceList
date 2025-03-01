@@ -25,10 +25,8 @@ h2 {
 main {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     justify-content: center;
-    align-content: center;
-    width: 100%;
+    align-items: center;
 }
 
 .student-card {
@@ -40,29 +38,34 @@ main {
     font-weight: 600;
     text-shadow: 1px 1px 3px rgb(0, 0, 0);
     border-radius: 10px;
-    transition: .1s ease-in-out;
     cursor: pointer;
 }
 
 .student-card:active {
-    transform: scale(.97);
     user-select: none;
 }
 
-.checkbox {
+input[type='checkbox'],
+input[type='radio'] {
     margin-right: 10px;
+}
+
+.button-container {
+    position: relative;
 }
 
 button {
     width: 250px;
     margin: 10px;
     padding: 20px;
-    font-weight: 600;
-    color: #ffffff;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: #fff;
     background-color: #262626;
     border: none;
     border-radius: 10px;
     transition: .1s ease-in-out;
+    cursor: pointer;
 }
 
 button:active {
@@ -71,72 +74,87 @@ button:active {
 
 .reason {
     outline: none;
-    display: none;
     width: 100%;
     margin-top: 20px;
-    padding: 7% 7%;
-    color: #ffffff;
+    padding: 7%;
+    color: #fff;
     background-color: #00000046;
     border: none;
     border-radius: 10px;
     cursor: text;
+    font-size: .9rem;
 }
 
 .reason::placeholder {
-    color: #efefefe6;
+    color: #ffffff98;
+}
+
+.hidden {
+    display: none;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.presets {
+    border-radius: 10px;
+    background-color: #00000057;
+}
+
+.preset {
+    display: block;
+    padding: 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-shadow: none;
+}
+
+.preset:not(:last-child) {
+    border-bottom: 2px #0000002d solid;
+}
+
+.preset input[type="radio"]:checked {
+    background-color: #191919;
+}
+
+#star {
+    position: absolute;
+    right: -20px;
+    top: -20px;
+}
+
+#star.animate {
+    display: block;
+    animation: starAnimation 2.2s cubic-bezier(.23, 1, .32, 1);
+    z-index: -1;
+}
+
+@keyframes starAnimation {
+    0% {
+        transform: scale(0) rotate(0deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(.5) rotate(60deg);
+        right: -60px;
+        top: -40px;
+    }
 }
 
 @media (min-width: 768px) {
-
-
-    main {
-        align-content: center;
-    }
-
-    .student-card {
-        width: 100%;
-        font-size: 1.2em;
-    }
-
-    button {
-        width: 100%;
-    }
-
-    .reason {
-        width: 100%;
-        padding: 3% 3%;
-        font-size: .8em;
-        font-weight: bold;
-    }
-}
-
-@media (min-width: 1024px) {
     body {
-        padding: 5% 10%;
-    }
-
-    .reason {
-        width: 100%;
-        padding: 2%;
-        padding: 2% 2%;
-        font-size: .8em;
-        font-weight: bold;
+        padding: 150px;
     }
 
     button {
-        height: 75px;
-    }
-}
-
-@media (min-width: 1280px) {
-
-    h2 {
-        font-size: 30pt;
+        width: 400px;
     }
 
     .student-card {
         position: relative;
-        width: 80%;
+        width: 400px;
+        font-size: 1.2rem;
     }
 
     .student-card::before {
@@ -150,7 +168,13 @@ button:active {
         pointer-events: none;
     }
 
-    button {
-        width: 80%;
+    .reason {
+        padding: 5%;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .preset {
+        font-size: 1rem;
     }
 }
