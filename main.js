@@ -74,12 +74,12 @@ let absents = [];
 // Сначала заполняется список отсутсвтующих с причинами, затем в его начало добавляется элемент с их кол-вом
 function copyToClipboard() {
     absents.length = 0;
-    let presetText = '';
     for (const checkbox of checkboxes) {
         if (checkbox.checked) {
             const hidden = checkbox.closest('.student-card').querySelector('.hidden');
             const presets = hidden.querySelectorAll('.preset');
 
+            let presetText = '';
             for (const preset of presets) {
                 if (preset.querySelector('input[type="radio"]').checked) {
                     presetText = preset.lastElementChild.textContent;
